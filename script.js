@@ -1,20 +1,24 @@
-function calculateMaturityAmount(){
+function checkVowels(){
+    var text = document.getElementById("inputText").value;
+    var vowelCount = 0;
 
-    // Get input values from the form elements
+    // convert it into lowercase
+    text = text.toLowerCase();
 
-    const principle = parseFloat(document.getElementById('principle').value);
-    const intersRate = parseFloat(document.getElementById('interestRate').value);
-    const tenure = parseFloat(document.getElementById('tenure').value);
+    for(var i = 0; i < text.length; i++){
 
-    // Perform the Calculation
+        var char = text.charAt(i); // 0 
+        if(isVowel(char)){
+             vowelCount++;   
+        }
+    }
 
-    const maturityAmount = principle + (principle * intersRate * tenure)/100;
-
-    // Display the Result
-
-    document.getElementById('result').innerText = `Maturity Amount: ${maturityAmount.toFixed(2)}`;
+    var result = document.getElementById("result");
+    result.textContent = "Total Vowels: " + vowelCount;
 
 }
 
-// Attach the event listener to the calculate Button
-document.getElementById('calculateBtn').addEventListener('click',calculateMaturityAmount);
+function isVowel(char){
+    var vowels = ["a","e","i","o","u"];
+    return vowels.includes(char);
+}
